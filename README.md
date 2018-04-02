@@ -19,27 +19,27 @@ Sign into IBM Cloud to see the welcome page below. New services are provisioned 
 
 <img src="images/Picture01.png">
 <br>
-<img src="images/Picture02.png">
+<img src="images/Picture02.jpg">
 
 Make sure that a Lite plan is being selected for all services. Click “Create,” then search for and add Lite “Machine Learning” and “Object Storage” services in the Catalog. Once finished, the IBM Cloud logo in the top left should bring you to a page shown below.
 
-<img src="images/Picture03.png">
+<img src="images/Picture03.jpg">
 
 ## Create Watson Studio Project / Connect Services <a name="create"></a>
 
 Now a new Watson Studio Project will be created that utilizes all the IBM Cloud services just provisioned. Access Watson Studio by selecting the created Watson Studio service from the IBM Cloud dashboard, then select “Get Started” click through prompts. Once in Watson Studio select “New project” on the right. The type of project needed is “Complete.”
 
-<img src="images/Picture04.png">
+<img src="images/Picture04.jpg">
 
-<img src="images/Picture05.png">
+<img src="images/Picture05.jpg">
 
 Name the new project “DLaaS Workshop.” The IBM Cloud Object Storage service that was provisioned is already associated with our project. Select “Create” at the bottom right.
 
-<img src="images/Picture06.png">
+<img src="images/Picture06.jpg">
 
 Once the new project is created, select “Settings” in the far-right of the top menu. Scroll down until “Associated services” is visible and under “Add service” select “Machine Learning” to add the existing Watson Machine Learning service that was provisioned. Now all over the services are associated with each other in the Watson Studio project and are ready for Deep Learning models.
 
-<img src="images/Picture07.png">
+<img src="images/Picture07.jpg">
 
 ## Add Data <a name="add"></a>
 
