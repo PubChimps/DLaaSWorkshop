@@ -43,11 +43,19 @@ Once the new project is created, select “Settings” in the far-right of the t
 
 ## Add Data <a name="add"></a>
 
-Buckets will now be created in the IBM Cloud Object storage service to so that the mnist training data and the results of deep learning training algorithms can be stored. The data is loaded in two different formats, demonstrated in “AddMNistData.ipynb”. Under assets, we will add a “New notebook” and point it to the notebook hosted on GitHub while keeping the default runtime already specified.
+Buckets will now be created in the IBM Cloud Object storage service to so that the mnist training data and the results of deep learning training algorithms can be stored. The data is loaded in two different formats, demonstrated in “AddMNistData.ipynb”. Under assets, we will add a “New notebook”, chose "From URL," name the notebook "AddMnistData", and to point it to https://raw.githubusercontent.com/PubChimps/DLaaSWorkshop/master/AddMnistData.ipynb as the "Notebook URL" while keeping the default runtime already specified.
 
-<img src="images/Picture08.png">
+<img src="images/Picture08.jpg">
 <br>
-<img src="images/Picture09.png">
+<img src="images/Picture09.jpg">
+
+| ![Picture10.jpg](images/Picture10.jpg) | 
+|:--:| 
+| *To add the mnist data to Cloud Object Storage, press Shift+Enter through the cells of the notebook and observe output* |
+
+| ![Picture11.jpg](images/Picture11.jpg) | 
+|:--:| 
+| *The Notebook will ask for Cloud Object Storage credentials, these can be found be selecting the provisioned service in the IBM Cloud dashboard, then "Service Credentials, then coping "WDP-Admin-..." to clipboard and pasting into notebook* |
 
 ## Build Neural Networks <a name="build"></a>
 
@@ -56,104 +64,105 @@ Two neural networks will be created, a convolutional neural network (cnn) by usi
 ### With Neural Network Modeler <a name="wnnm1"></a>
 The steps to create a cnn using Neural Network Modeler are shown in the following annotated images.
 
-| ![Picture10.png](images/Picture10.png) | 
+| ![Picture12.jpg](images/Picture12.jpg) | 
 |:--:| 
 | *In the “Assets” section of the “DLaaS Workshop” project, scroll and select “New Flow” from “Modeler flows”* |
 
-| ![Picture11.png](images/Picture11.png) | 
+| ![Picture13.png](images/Picture13.jpg) | 
 |:--:| 
 | *Name the new model “mnist-nnm” and select “Neural Network Modeler” as the flow type. Then select “Create”* |
 
-| ![Picture12.png](images/Picture12.png) | 
+| ![Picture14.jpg](images/Picture14.jpg) | 
 |:--:| 
-| *Use the Palette to the left to add the 10 neural network nodes shown above and connect them as follows.* |
+| *Use the Palette to the left to drag and drop the 10 neural network nodes shown above and connect them as follows.* |
 
-Now the nodes must be configured for the mnist data, a node’s settings are visible by double-clicking it or selecting ⋮ then “open.”
+Now the nodes must be configured for the mnist data, a node’s settings are visible by double-clicking it or selecting ⋮ then “Open.”
 
-|![Picture13.png](images/Picture13.png) | 
+|![Picture15.jpg](images/Picture15.jpg) | 
 |:--:| 
-| *Edit the “Data” section to point to the pickle object that were created and stored in the mnist-nnm-… bucket from AddMnistData Notebook, then select “Settings”* |
+| *Edit the “Data” section of the "Input Data" node by selecting "Create a Connection", then point to the pickle object that was created and stored in the **"mnist-nnm-…"** bucket from the AddMnistData Notebook, then select “Settings”* |
 
-|![Picture14.png](images/Picture14.png) | 
+|![Picture16.jpg](images/Picture16.jpg) | 
 |:--:| 
-| *Configure the “Image Data” settings. Images are 28x28, 10 classes and are in “Python Pickle” format. Then select “Save”* |
+| *Configure the “Image Data” settings. Images are 28x28, 10 classes and is in “Python Pickle” format. Select “Save”* |
 
-|![Picture15.png](images/Picture15.png) | 
+|![Picture17.jpg](images/Picture17.jpg) | 
 |:--:| 
-| *The settings for the “Conv 2D” layer are on the left. The settings that cannot be seen in the screenshot are left to default.* |
+| *The settings for the “Conv 2D” layer are on the left. The settings that cannot be seen in the screenshot are left to their default. Make sure the **Trainable** box is checked. Select "Save"* |
 
-|![Picture16.png](images/Picture16.png) | 
+|![Picture18.jpg](images/Picture18.jpg) | 
 |:--:| 
 | *The “ReLU” activation layer will have a “Negative slope” of 0.3* |
 
-|![Picture17.png](images/Picture17.png) | 
+|![Picture19.jpg](images/Picture19.jpg) | 
 |:--:| 
-| *The “Pool 2D” settings. Make sure the “Trainable” box is checked for this node and the “Conv 2D” node* |
+| *The “Pool 2D” settings. Make sure the **Trainable** box is checked for this node and the “Conv 2D” node* |
 
-|![Picture18.png](images/Picture18.png) | 
+|![Picture20.jpg](images/Picture20.jpg) | 
 |:--:| 
-| *The “Dense” node here must have the same number of nodes as classes in the data, in this case 10.* |
+| *The “Dense” node before the softmax classifier must have the same number of nodes as classes in the data, in this case 10.* |
 
-|![Picture19.png](images/Picture19.png) | 
+|![Picture21.jpg](images/Picture21.jpg) | 
 |:--:| 
 | *All other nodes are left in default settings. The “Validation Success” notification should now be seen. Select “Publish training definition” in the top right.* |
 
-|![Picture20.png](images/Picture20.png) | 
+|![Picture22.jpg](images/Picture22.jpg) | 
 |:--:| 
-| *Name the training definition “mnist-nnm-training-def” and associate it with the WML instance.* |
+| *Name the training definition “mnist-nnm-training-def” and associate it with the WML instance. Select "Publish"* |
 
-|![Picture21.png](images/Picture21.png) | 
+|![Picture23.jpg](images/Picture23.jpg) | 
 |:--:| 
 | *Once the training definition is successfully created, “train it in an experiment.”* |
 
-|![Picture22.png](images/Picture22.png) | 
+|![Picture24.jpg](images/Picture24.jpg) | 
 |:--:| 
 | *Name the experiment “mnist-nnm-experiment” and click “Select” under “Cloud Object Storage…”* |
 
-|![Picture23.png](images/Picture23.png) | 
+|![Picture25.jpg](images/Picture25.jpg) | 
 |:--:| 
-| *Select the “mnist-nnm-…” bucket containing training data. Create a new object storage bucket to store results. This has to be globally unique, so I added my last name. Then click “Select” at the bottom right.* |
+| *Select the “mnist-nnm-…” bucket containing training data. Create a new object storage bucket to store results. This has to be a globally unique bucket name, so I added my last name. Click “Select,” then "Add training definition" .* |
 
-|![Picture24.png](images/Picture24.png) | 
+|![Picture26.jpg](images/Picture26.jpg) | 
 |:--:| 
-| *Select “1 X NVIDIA Tesla K80 (2 GPU)” as the Compute plan. Others are not available on the IBM Cloud Lite plan. Now click “Select.” The neural network will now begin training on the mnist data. As it is training continue to the next section.* |
+| *Select an "Existing training definition“ and use the "mnist-nnm-training-def" created earlier. 1 X NVIDIA Tesla K80 (2 GPU)” will be the "Compute plan" (Others are not available on the IBM Cloud Lite plan). Click “Select” and "Create and run."  The neural network will now begin training on the mnist data. As it is training continue to the next section.* |
 
 ### With Keras <a name="wkeras"></a>
-Under the assets section of the “DLaaS Workshop” project, add a new notebook, name it “mnist-hpo” and select from URL with the URL https://raw.githubusercontent.com/PubChimps/DLaaSWorkshop/master/mnist-hpo.ipynb
+Under the assets section of the “DLaaS Workshop” project, add a new notebook with "From URL" as the source, name it “mnist-hpo” and copy/paste https://raw.githubusercontent.com/PubChimps/DLaaSWorkshop/master/mnist-hpo.ipynb as the Notebook URL. **"Default Anaconda S (4vCPU and 16GB RAM)** will allow the Keras model to train faster. Select "Create Notebook"
 
-![Picture25.png](images/Picture25.png)
+![Picture27.jpg](images/Picture27.jpg)
 
 ## Run Experiments <a name="run"></a>
 ### With Neural Network Modeler <a name="wnnm2"></a>
 The experiment that was created in the previous section should be done training. Find “mnist-nnm-experiment” under the Experiments section of the “DLaaS Workshop” project. 
 
-|![Picture26.png](images/Picture26.png) | 
+|![Picture28.jpg](images/Picture28.jpg) | 
 |:--:| 
 | *“mnist-nnm-training-def” should be in the Completed section. Its output logs can be view by selecting it.* |
 
 ### With Hyperparameter Optimization <a name="whpo"></a>
 A new experiement will now be added to illustrate Watson Studio’s Hyperparameter Optimization. Select “New experiment” in the assets section of the “DLaaS Workshop,” name the new experiment “mnist-hpo-experiment” and click “Select.”
 
-![Picture27.png](images/Picture27.png)
+![Picture29.jpg](images/Picture29.jpg)
 <br>
-|![Picture28.png](images/Picture28.png) | 
+
+|![Picture30.jpg](images/Picture30.jpg) | 
 |:--:| 
 | *The buckets that were created in part 2 of “AddMnistData.ipynb” will be used here* |
 
-|![Picture29.png](images/Picture29.png) | 
+|![Picture31.jpg](images/Picture31.jpg) | 
 |:--:| 
-| *Name the new training definition “mnist-hpo-training-def” and upload “MNIST.ZIP” from the DLaaSWorkshop repository on GitHub. This contains the model written in Keras earlier, as well as other code.* |
+| *Add a training definition and name it “mnist-hpo-training-def” and upload [this zip file](https://github.com/PubChimps/DLaaSWorkshop/blob/master/MNIST.zip). It contains the model written in Keras earlier, as well as other code.* |
 
-|![Picture30.png](images/Picture30.png) | 
+|![Picture32.jpg](images/Picture32.jpg) | 
 |:--:| 
-| *Choose the Framework and Execution command illustrated above, the same Compute plan from earlier, and “random” as the Hyperparameter optimization method, fill out the rest of the page as follows before selecting “Add Hyperparamter”* |
+| *Choose the "Framework" and "Execution command" illustrated above, the same Compute plan from earlier, and “random” as the Hyperparameter optimization method, fill out the rest of the page as follows before selecting “Add Hyperparameter”* |
 
-|![Picture31.png](images/Picture31.png) | 
+|![Picture33.jpg](images/Picture33.jpg) | 
 |:--:| 
-| *Instruct Watson Studio to vary the hyperparameter “learning_rate” as follows.* |
+| *Instruct Watson Studio to vary the hyperparameter "learning_rate" as follows. Select "Add"* |
 
-|![Picture32.png](images/Picture32.png) | 
+|![Picture34.jpg](images/Picture34.jpg) | 
 |:--:| 
-| *The experiment is ready. Select “Create and run”* |
+| *The experiment is ready. Select "Create" then "Create and run"* |
 
 
