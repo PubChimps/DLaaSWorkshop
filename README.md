@@ -11,13 +11,14 @@
 5. [Run Experiments](#run)
 	1. [With Neural Network Modeler](#wnnm2)
 	2. [With Hyperparameter Optimization](#whpo)
+6. [Predict With Model](#predict)
 
 
 ## Provision IBM Cloud Services  <a name="provision"></a>
 
 Sign into IBM Cloud to see the welcome page below. New services are provisioned by selecting “Catalog.” Search for and select “Watson Studio.”
 
-<img src="images/Picture01.png">
+<img src="images/Picture01.jpg">
 <br>
 <img src="images/Picture02.jpg">
 
@@ -84,7 +85,7 @@ Now the nodes must be configured for the mnist data, a node’s settings are vis
 
 |![Picture16.jpg](images/Picture16.jpg) | 
 |:--:| 
-| *Configure the “Image Data” settings. Images are 28x28, 10 classes and is in “Python Pickle” format. Select “Save”* |
+| *Configure the “Image Data” settings. Images are 28x28, **10 classes** and is in **Python Pickle** format. Select “Save”* |
 
 |![Picture17.jpg](images/Picture17.jpg) | 
 |:--:| 
@@ -165,4 +166,14 @@ A new experiement will now be added to illustrate Watson Studio’s Hyperparamet
 |:--:| 
 | *The experiment is ready. Select "Create" then "Create and run"* |
 
+## Predict With Model <a name="predict"></a>
+Pick a model to save and select it by clicking ⋮ then "Save Model"
+
+<img src="images/Picture35.jpg">
+
+|![Picture36.jpg](images/Picture36.jpg) | 
+|:--:| 
+| *Name the model "mnist-hpo-saved-model". Select "Save"* |
+
+Use the saved model in the notebook [PredictingWithModel](https://raw.githubusercontent.com/PubChimps/DLaaSWorkshop/master/PredictWithModel.ipynb)
 
