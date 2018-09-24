@@ -14,7 +14,7 @@
 6. [Predict With Model](#predict)
 
 
-## Provision IBM Cloud Services  <a name="provision"></a>
+## Provision IBM Clud Services  <a name="provision"></a>
 
 Sign into IBM Cloud to see the welcome page below. New services are provisioned by selecting “Catalog.” Search for and select “Watson Studio.”
 
