@@ -1,6 +1,70 @@
-<img src="images/IBM.png">
+---
+#Front matter (metadata).  Note: Make sure to update this file's folder name if the pattern's name or url changes.
 
-# DLaaSWorkshop
+draft: false       
+type: howto    
+title: Introduction to Deep Learning as a Service
+subtitle: 'Training and Serving Deep Learning models in the cloud'
+abstract: 'Training and Serving Deep Learning models in the cloud'
+excerpt: 'Training and Serving Deep Learning models in the cloud'
+keywords: 'Watson, Watson Studio, Machine Learning, deep learning, GPU, tensorflow'
+authors: 
+  - name: Nick Acosta
+    email: nacosta@ibm.com
+# translators: []
+completed_date: '2018-09-24'
+last_updated: '2018-09-24'
+pwg:
+- "watson machine learning"
+pta:
+- "cognitive, data, and analytics"
+related_links:           # OPTIONAL - Note: zero or more related links
+  - title: IBM Machine Learning
+    url: https://github.com/watson-developer-cloud/unity-sdk
+    description: Check out the official repo for the Watson SDK for Unity.
+  - title: IBM Watson Studio
+    url: https://assetstore.unity.com/packages/tools/ai/ibm-watson-sdk-for-unity-108831
+    description: View the IBM Watson SDK in the Unity Asset Store.
+# related_content:        # OPTIONAL - Note: zero or more related content
+#   - type: pattern|article|tutorial|cast|presentation
+#     slug:
+# series: []
+primary_tag: "machine-learning"
+tags:
+- artificial-intelligence
+- deep-learning
+services:
+- watson-studio
+- machine-leaning
+- cloud-object-storage
+components:
+- cloud-ibm
+# runtimes: []
+
+---
+
+introduction
+write introduction
+
+
+## Learning objectives
+
+After completing this tutorial, you should be able to:
+
+* Build simple neural network models both via a user interface and deep learning frameworks
+* Train multiple models quickly using GPUs
+
+## Prerequisites
+
+To follow this tutorial, you will need:
+
+* An [IBM Cloud Account](https://console.bluemix.net/registration/).
+
+## Estimated time
+
+It should take you approximately 60-120 minutes to complete the tutorial.
+
+# DLaaS Introduction
 # Table of Contents
 1. [Provision IBM Cloud Services](#provision)
 2. [Create Watson Studio Project / Connect Services](#create)
@@ -14,7 +78,7 @@
 6. [Predict With Model](#predict)
 
 
-## Provision IBM Cloud Services  <a name="provision"></a>
+## Provision IBM Clud Services  <a name="provision"></a>
 
 Sign into IBM Cloud to see the welcome page below. New services are provisioned by selecting “Catalog.” Search for and select “Watson Studio.”
 
